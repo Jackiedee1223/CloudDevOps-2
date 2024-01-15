@@ -18,21 +18,21 @@ Route 53 will handle DNS, CloudFront will serve as our Content Delivery Network 
 
 <h2>Flow of Execution</h2>
 
-1.	Create Key pair for Beanstalk instance login: Generate a key pair that will be used for secure login to your Elastic Beanstalk instance.
-2. Create Security Group for Amazon ElastiCache, RDS, and ActiveMQ: Define security groups to control inbound and outbound traffic for your ElastiCache, RDS, and ActiveMQ instances.	 
-3.	Create RDS, Amazon ElastiCache, and Amazon ActiveMQ: Set up your relational database (RDS), caching with ElastiCache, and the message broker with ActiveMQ.
-4.	Create Elastic Beanstalk Environment: Deploy and manage your application in an Elastic Beanstalk environment, allowing automatic scaling and easy application management.
-5. Update SG of backend to allow traffic from Bean SG: Adjust security group rules to permit traffic from your Elastic Beanstalk security group to the backend services.	
+1.	Create Key pair for Beanstalk instance login: Generate a key pair that will be used for secure login to Elastic Beanstalk instance.
+2. Create Security Group for Amazon ElastiCache, RDS, and ActiveMQ: Define security groups to control inbound and outbound traffic for ElastiCache, RDS, and ActiveMQ instances.	 
+3.	Create RDS, Amazon ElastiCache, and Amazon ActiveMQ: Set up relational database (RDS), caching with ElastiCache, and the message broker with ActiveMQ.
+4.	Create Elastic Beanstalk Environment: Deploy and manage the application in an Elastic Beanstalk environment, allowing automatic scaling and easy application management.
+5. Update SG of backend to allow traffic from Bean SG: Adjust security group rules to permit traffic from Elastic Beanstalk security group to the backend services.	
 6.	Update SG of backend to allow internal traffic: Configure security groups to enable internal communication between components.
-7.	Launch EC2 instance for DB initializing: Start an EC2 instance dedicated to initializing and configuring your RDS database.
-8. Login to the instance and initialize RDS DB: Access the EC2 instance to execute the necessary scripts or commands to initialize your RDS database.	
+7.	Launch EC2 instance for DB initializing: Start an EC2 instance dedicated to initializing and configuring RDS database.
+8. Login to the instance and initialize RDS DB: Access the EC2 instance to execute the necessary scripts or commands to initialize RDS database.	
 9.	Change health check on Beanstalk to login: Adjust the health check settings on Elastic Beanstalk to ensure it checks the login status or relevant indicators.
-10.	Add 443 https Listener to ELB: Enhance security by configuring a secure HTTPS listener on your Elastic Load Balancer (ELB).
-11. Build Artifact with Backend Information: Compile an artifact containing the necessary information for your backend services.
-12. Deploy Artifact to Beanstalk: Use Elastic Beanstalk to deploy the compiled artifact, making your application available.
+10.	Add 443 https Listener to ELB: Enhance security by configuring a secure HTTPS listener on Elastic Load Balancer (ELB).
+11. Build Artifact with Backend Information: Compile an artifact containing the necessary information for the backend services.
+12. Deploy Artifact to Beanstalk: Use Elastic Beanstalk to deploy the compiled artifact, making the application available.
 13. Create CDN with SSL Cert: Establish a Content Delivery Network (CDN) and configure it with an SSL certificate for enhanced performance and security.
-14. Update Entry in GoDaddy DNS Zones: Update the DNS settings in your GoDaddy account to point to the newly created CDN and ensure proper domain resolution.
-15. Test the URL: Conduct thorough testing to verify that your application is accessible and functioning correctly through the updated URL.
+14. Update Entry in GoDaddy DNS Zones: Update the DNS settings in GoDaddy account to point to the newly created CDN and ensure proper domain resolution.
+15. Test the URL: Conduct thorough testing to verify that the application is accessible and functioning correctly through the updated URL.
 
 
 
