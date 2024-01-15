@@ -1,34 +1,41 @@
-# Lift & Shift Web Application on AWS Cloud
+# Re-architecture Web Application on AWS Cloud
 <h2>Scenario</h2>
 <p>
-The project is lift and shift application workload and we’re going to lift our application, the VPROFILE and shift it on AWS cloud. In this project, we are hosting and running it on AWS cloud for production and use a lift and shift strategy. 
+The objective of our Cloud DevOps Project is to re-architect and refactor our existing services for the AWS Cloud with a focus on enhancing agility, reducing operational overhead, eliminating upfront costs, and leveraging Infrastructure as Code (IaaC), Platform as a Service (PaaS), and Software as a Service (SaaS) models.
 
-Application services such as databases, application services such as Tomcat, LAMP Stack, DNS services and various kinds of services that powers application, and all these work in the Datacenter. So many servers running various services in local Data Centre. To manage all this, we need multiple teams working around clock. We need virtualization team for running virtualization platform, datacenter operations team for Data Centre and related operations work, monitoring team to monitor 24/7 and system administration team.
+Currently, our services are spread across physical machines, virtual machines, and some existing cloud instances like EC2. This diversity involves managing a wide array of services, including databases, application layers, webservers, and network services like DNS and DHCP. To effectively handle this complexity, various teams such as Cloud Computing, Virtualization, DataCenter Operations, Monitoring, and System Administration have to collaborate, leading to operational overhead and challenges with uptime and scaling.
 
-Managing all these services, servers and teams is complex. It becomes more complex if you want to scale up or scale down, which needs to be done very regularly. There's a huge cost for procuring all these resources and also regular maintenance cost. Most of the processes in this will be manual. If we have a virtualization layer on top of it, it is possible to automate those things, but it's really difficult to do it and also to maintain it. And not to mention all these things are very time consuming. Solution to all this problem is to have a cloud computing setup, so instead of running our workload in the data center, we run it on a cloud computing platform that we don't pay for the upfront cost for procuring the resource. We pay as we go. Consuming infrastructure as a service like electricity. We get flexibility, it's elastic in nature, we can scale out or scale in and really control our cost, managing infrastructure becomes easier. And most important, we can do automation, we can automate each and every step and process to avoid human errors and save our time.
+To address these issues, we aim to transition to a cloud setup focused on PaaS and SaaS offerings, embracing IaaC principles for flexible infrastructure, automation, and a pay-as-you-go model. Our chosen AWS services such as EC2 Instances, ELB, Autoscaling, EFS/S3, RDS, ElastiCache, ActiveMQ, Route53, and CloudFront will enable us to achieve these goals effectively.
 
-In this project, EC2 instances as Virtual Machines for Tomcat, RabbitMQ, Memcache and MySQL servers. We will also using Elastic Load Balancer, which will be replacement of our engine service. Autoscaling service will automatically scale in and out in EC2 instances, which will automatically control our resources and also our cost. For storage, S3 or EFS storage as shared storage and Route 53 for a private DNS service. 
+Using AWS Elastic Beanstalk will streamline our deployment process by automatically provisioning EC2 instances and hosting applications without the need for manual management. Leveraging S3 for storing artifacts, RDS for databases, and services like ElastiCache for memcache and ActiveMQ for RabbitMQ will ensure easy scalability, rapid setup based on requirements, automated backups, and seamless operations.
+
+Route 53 will handle DNS, CloudFront will serve as our Content Delivery Network (CDN), and Auto Scaling coupled with Elastic Load Balancing (ELB) will ensure dynamic load management and high availability. Embracing these AWS services will not only streamline our infrastructure but also optimize costs, reduce manual efforts, and improve our system's overall reliability and flexibility.
 
 </p>
 
 <h2>Architecture of AWS Services</h2>
- <img src="https://github.com/Jackiedee1223/image-repos/blob/main/CloudDevOps-1.png">
-<p>
-Users will access our website by using a URL and that URL we be pointing are told, will be point-to-endpoint. This entry will be mentioned in GoDaddy DNS. User browsers or the application will use this endpoint to connect to the load balancer by using HTTPS certificate for HTTPS encryption will he mentioned in Amazon Certificate Manager (ACM) Service. So, user will access application load balancer endpoint and load balancer will be in a security group and only allow HTTTPS traffic. The application load balancer will route the request to Tomcat instances. Apache Tomcat service will be running on some set of instances which will be managed by Auto Scaling Group. So as for high or low load, these instances capacity will be scaled out or scaled in. These EC2 instances where Tomcat is running in a separate security group and only allow traffic on port 8080 only from a load balancer. Our application needs backend servers which are MySQL, Memcache and RabbitMQ. Information of backend services or the backend server IP address will be mentioned in Route 53 private DNS zones. Tomcat instances will access back server with a name which will be mentioned in Route 53. Private DNS where the private IP address of background servers will be mentioned. These backend EC2 instances will be running MySQL, RabbitMQ and Memcache will be in a separate security group. So, the AWS resources which are in used over here are first Amazon Certificate Manager for a certificate Application Load Balancer. Set of EC2 instances for Tomcat, Memcache and RabbitMQ, three separate security groups. Amazon Route 53 for DNS Private Zones, Amazon S3 bucket to store software artifacts.
-</p>
+ <img src="https://github.com/Jackiedee1223/image-repos/blob/main/CloudDevOps-2.png">
 
 <h2>Flow of Execution</h2>
 
-1.	Create Security groups
-2.	Create Key pairs
-3.	Launch instances with user data
-4.	Update IP address to name mapping in Route 53
-5.	Build application from source code
-6.	Upload to S3 bucket
-7.	Download artifact to Tomcat EC2 instance
-8.	Setup ELB with HTTPS, certificate from ACM
-9.	Map ELB endpoint to website name in GoDaddy DNS
-10.	Build ASG for Tomcat instances.
+1.	Create Key pair for Beanstalk instance login: Generate a key pair that will be used for secure login to your Elastic Beanstalk instance.
+2. Create Security Group for Amazon ElastiCache, RDS, and ActiveMQ: Define security groups to control inbound and outbound traffic for your ElastiCache, RDS, and ActiveMQ instances.	 
+3.	Create RDS, Amazon ElastiCache, and Amazon ActiveMQ: Set up your relational database (RDS), caching with ElastiCache, and the message broker with ActiveMQ.
+4.	Create Elastic Beanstalk Environment: Deploy and manage your application in an Elastic Beanstalk environment, allowing automatic scaling and easy application management.
+5. Update SG of backend to allow traffic from Bean SG: Adjust security group rules to permit traffic from your Elastic Beanstalk security group to the backend services.	
+6.	Update SG of backend to allow internal traffic: Configure security groups to enable internal communication between components.
+7.	Launch EC2 instance for DB initializing: Start an EC2 instance dedicated to initializing and configuring your RDS database.
+8. Login to the instance and initialize RDS DB: Access the EC2 instance to execute the necessary scripts or commands to initialize your RDS database.	
+9.	Change health check on Beanstalk to login: Adjust the health check settings on Elastic Beanstalk to ensure it checks the login status or relevant indicators.
+10.	Add 443 https Listener to ELB: Enhance security by configuring a secure HTTPS listener on your Elastic Load Balancer (ELB).
+11. Build Artifact with Backend Information: Compile an artifact containing the necessary information for your backend services.
+12. Deploy Artifact to Beanstalk: Use Elastic Beanstalk to deploy the compiled artifact, making your application available.
+13. Create CDN with SSL Cert: Establish a Content Delivery Network (CDN) and configure it with an SSL certificate for enhanced performance and security.
+14. Update Entry in GoDaddy DNS Zones: Update the DNS settings in your GoDaddy account to point to the newly created CDN and ensure proper domain resolution.
+15. Test the URL: Conduct thorough testing to verify that your application is accessible and functioning correctly through the updated URL.
+
+
+
 
 <h2>Validation & Summarization</h2>
 <h4>Security Group & Key Pairs</h4>
