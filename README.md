@@ -19,9 +19,9 @@ Route 53 will handle DNS, CloudFront will serve as our Content Delivery Network 
 <h2>Flow of Execution</h2>
 
 <b>1.	<b>Create Key pair for Beanstalk instance login: Generate a key pair that will be used for secure login to Elastic Beanstalk instance.</b>
-<p></p>
+<p><img src="https://github.com/Jackiedee1223/CloudDevOps-2/blob/main/images/Kps.png"></p>
 <b>2. Create Security Group for Amazon ElastiCache, RDS, and ActiveMQ: Define security groups to control inbound and outbound traffic for ElastiCache, RDS, and ActiveMQ instances.</b>	 
-<p></p>
+<p> <img src="https://github.com/Jackiedee1223/CloudDevOps-2/blob/main/images/SGs.png"></p>
 <b>3.	Create RDS, Amazon ElastiCache, and Amazon ActiveMQ: Set up relational database (RDS), caching with ElastiCache, and the message broker with ActiveMQ.</b>
 <p></p>
 <b>4.	Create Elastic Beanstalk Environment</b>: Deploy and manage the application in an Elastic Beanstalk environment, allowing automatic scaling and easy application management.</b>
