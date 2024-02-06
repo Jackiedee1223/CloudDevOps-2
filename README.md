@@ -28,7 +28,8 @@ Route 53 will handle DNS, CloudFront will serve as our Content Delivery Network 
 <p><img src="https://github.com/Jackiedee1223/CloudDevOps-2/blob/main/images/Brokers.jpg"></p>
 <p><img src="https://github.com/Jackiedee1223/CloudDevOps-2/blob/main/images/Available.jpg"></p>
 <b>4.	Create Elastic Beanstalk Environment</b>: Deploy and manage the application in an Elastic Beanstalk environment, allowing automatic scaling and easy application management.</b>
-<p></p>
+<p><img src="https://github.com/Jackiedee1223/CloudDevOps-2/blob/main/images/ElasticBeanstalk.PNG"></p>
+<p><img src="https://github.com/Jackiedee1223/CloudDevOps-2/blob/main/images/Domain.PNG"></p>
 <b>5. Update SG of backend to allow traffic from Bean SG: Adjust security group rules to permit traffic from Elastic Beanstalk security group to the backend services.</b>
 <p></p>
 <b>6.	Update SG of backend to allow internal traffic: Configure security groups to enable internal communication between components.</b>
