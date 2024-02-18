@@ -31,11 +31,11 @@ Route 53 will handle DNS, CloudFront will serve as our Content Delivery Network 
 <p><img src="https://github.com/Jackiedee1223/CloudDevOps-2/blob/main/images/ElasticBeanstalk.PNG"></p>
 <p><img src="https://github.com/Jackiedee1223/CloudDevOps-2/blob/main/images/Domain.PNG"></p>
 <b>5. To initialize and configure the RDS database, launch a dedicated EC2 instance and access it to execute the scripts or commands.</b>
-<p></p>
+<p><img src="https://github.com/Jackiedee1223/CloudDevOps-2/blob/main/images/3306.PNG"></p>
 <b>6. Configure security groups to both permit traffic from the Elastic Beanstalk SG and enable internal communication for the backend services./b>
-<p></p>
+<p><img src="https://github.com/Jackiedee1223/CloudDevOps-2/blob/main/images/InboundRules.PNG"></p>
 <b>7.	Change health check on Beanstalk to login: Adjust the health check settings on Elastic Beanstalk to ensure it checks the login status or relevant indicators.</b>
-<p></p>
+<p><img src="https://github.com/Jackiedee1223/CloudDevOps-2/blob/main/images/HealthCheck.PNG"></p>
 <b>8.	Add 443 https Listener to ELB: Enhance security by configuring a secure HTTPS listener on Elastic Load Balancer (ELB).</b>
 <p></p>
 <b>9. Build Artifact with Backend Information: Compile an artifact containing the necessary information for the backend services.</b>
