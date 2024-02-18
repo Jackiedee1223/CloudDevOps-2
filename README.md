@@ -30,9 +30,9 @@ Route 53 will handle DNS, CloudFront will serve as our Content Delivery Network 
 <b>4.	Create Elastic Beanstalk Environment</b>: Deploy and manage the application in an Elastic Beanstalk environment, allowing automatic scaling and easy application management.</b>
 <p><img src="https://github.com/Jackiedee1223/CloudDevOps-2/blob/main/images/ElasticBeanstalk.PNG"></p>
 <p><img src="https://github.com/Jackiedee1223/CloudDevOps-2/blob/main/images/Domain.PNG"></p>
-<b>5. Configure security groups to both permit traffic from the Elastic Beanstalk SG and enable internal communication for the backend services.</b>
+<b>5. To initialize and configure the RDS database, launch a dedicated EC2 instance and access it to execute the scripts or commands.</b>
 <p></p>
-<b>6. To initialize and configure the RDS database, launch a dedicated EC2 instance and access it to execute the scripts or commands.</b>
+<b>6. Configure security groups to both permit traffic from the Elastic Beanstalk SG and enable internal communication for the backend services./b>
 <p></p>
 <b>7.	Change health check on Beanstalk to login: Adjust the health check settings on Elastic Beanstalk to ensure it checks the login status or relevant indicators.</b>
 <p></p>
