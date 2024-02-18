@@ -44,6 +44,7 @@ Route 53 will handle DNS, CloudFront will serve as our Content Delivery Network 
  <img src="https://github.com/Jackiedee1223/CloudDevOps-2/blob/main/images/mvn_install.PNG"></p>
 <b>10. Deploy Artifact to Beanstalk: Use Elastic Beanstalk to deploy the compiled artifact, making the application available.</b>
 <p><img src="https://github.com/Jackiedee1223/CloudDevOps-2/blob/main/images/Deploy.PNG"></p>
+ <p><img src="https://github.com/Jackiedee1223/CloudDevOps-2/blob/main/images/V2.PNG"></p>
 <b>11. Create CDN with SSL Cert: Establish a Content Delivery Network (CDN) and configure it with an SSL certificate for enhanced performance and security.</b>
 <p></p>
 <b>12. Update Entry in GoDaddy DNS Zones: Update the DNS settings in GoDaddy account to point to the newly created CDN and ensure proper domain resolution.</b>
