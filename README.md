@@ -37,7 +37,7 @@ Route 53 will handle DNS, CloudFront will serve as our Content Delivery Network 
 <b>7.	Change health check on Beanstalk to login: Adjust the health check settings on Elastic Beanstalk to ensure it checks the login status or relevant indicators.</b>
 <p><img src="https://github.com/Jackiedee1223/CloudDevOps-2/blob/main/images/HealthCheck.PNG"></p>
 <b>8.	Add 443 https Listener to ELB: Enhance security by configuring a secure HTTPS listener on Elastic Load Balancer (ELB).</b>
-<p></p>
+<p><img src="https://github.com/Jackiedee1223/CloudDevOps-2/blob/main/images/443.PNG"></p>
 <b>9. Build Artifact with Backend Information: Compile an artifact containing the necessary information for the backend services.</b>
 <p></p>
 <b>10. Deploy Artifact to Beanstalk: Use Elastic Beanstalk to deploy the compiled artifact, making the application available.</b>
