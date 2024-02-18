@@ -40,8 +40,8 @@ Route 53 will handle DNS, CloudFront will serve as our Content Delivery Network 
 <p><img src="https://github.com/Jackiedee1223/CloudDevOps-2/blob/main/images/443.PNG"></p>
 <b>9. Build Artifact with Backend Information: Compile an artifact containing the necessary information for the backend services.</b>
 <p><img src="https://github.com/Jackiedee1223/CloudDevOps-2/blob/main/images/src.PNG"></p>
- <p>mvn install</p>
-<p><img src="https://github.com/Jackiedee1223/CloudDevOps-2/blob/main/images/mvn_install.PNG"></p>
+<p>maven install
+ <img src="https://github.com/Jackiedee1223/CloudDevOps-2/blob/main/images/mvn_install.PNG"></p>
 <b>10. Deploy Artifact to Beanstalk: Use Elastic Beanstalk to deploy the compiled artifact, making the application available.</b>
 <p></p>
 <b>11. Create CDN with SSL Cert: Establish a Content Delivery Network (CDN) and configure it with an SSL certificate for enhanced performance and security.</b>
