@@ -30,25 +30,23 @@ Route 53 will handle DNS, CloudFront will serve as our Content Delivery Network 
 <b>4.	Create Elastic Beanstalk Environment</b>: Deploy and manage the application in an Elastic Beanstalk environment, allowing automatic scaling and easy application management.</b>
 <p><img src="https://github.com/Jackiedee1223/CloudDevOps-2/blob/main/images/ElasticBeanstalk.PNG"></p>
 <p><img src="https://github.com/Jackiedee1223/CloudDevOps-2/blob/main/images/Domain.PNG"></p>
-<b>5. Update SG of backend to allow traffic from Bean SG: Adjust security group rules to permit traffic from Elastic Beanstalk security group to the backend services. Update SG of backend to allow internal traffic: Configure security groups to enable internal communication between components.</b>
+<b>5. Configure security groups to both permit traffic from the Elastic Beanstalk SG and enable internal communication for the backend services.</b>
 <p></p>
-<b>6.	Launch EC2 instance for DB initializing: Start an EC2 instance dedicated to initializing and configuring RDS database.</b>
+<b>6. To initialize and configure the RDS database, launch a dedicated EC2 instance and access it to execute the scripts or commands.</b>
 <p></p>
-<b>7. Login to the instance and initialize RDS DB: Access the EC2 instance to execute the necessary scripts or commands to initialize RDS database.</b>	
+<b>7.	Change health check on Beanstalk to login: Adjust the health check settings on Elastic Beanstalk to ensure it checks the login status or relevant indicators.</b>
 <p></p>
-<b>8.	Change health check on Beanstalk to login: Adjust the health check settings on Elastic Beanstalk to ensure it checks the login status or relevant indicators.</b>
+<b>8.	Add 443 https Listener to ELB: Enhance security by configuring a secure HTTPS listener on Elastic Load Balancer (ELB).</b>
 <p></p>
-<b>9.	Add 443 https Listener to ELB: Enhance security by configuring a secure HTTPS listener on Elastic Load Balancer (ELB).</b>
+<b>9. Build Artifact with Backend Information: Compile an artifact containing the necessary information for the backend services.</b>
 <p></p>
-<b>10. Build Artifact with Backend Information: Compile an artifact containing the necessary information for the backend services.</b>
+<b>10. Deploy Artifact to Beanstalk: Use Elastic Beanstalk to deploy the compiled artifact, making the application available.</b>
 <p></p>
-<b>11. Deploy Artifact to Beanstalk: Use Elastic Beanstalk to deploy the compiled artifact, making the application available.</b>
+<b>11. Create CDN with SSL Cert: Establish a Content Delivery Network (CDN) and configure it with an SSL certificate for enhanced performance and security.</b>
 <p></p>
-<b>12. Create CDN with SSL Cert: Establish a Content Delivery Network (CDN) and configure it with an SSL certificate for enhanced performance and security.</b>
+<b>12. Update Entry in GoDaddy DNS Zones: Update the DNS settings in GoDaddy account to point to the newly created CDN and ensure proper domain resolution.</b>
 <p></p>
-<b>13. Update Entry in GoDaddy DNS Zones: Update the DNS settings in GoDaddy account to point to the newly created CDN and ensure proper domain resolution.</b>
-<p></p>
-<b>14. Test the URL: Conduct thorough testing to verify that the application is accessible and functioning correctly through the updated URL.</b>
+<b>13. Test the URL: Conduct thorough testing to verify that the application is accessible and functioning correctly through the updated URL.</b>
 <p></p>
 
 <h2>Reference</h2>
